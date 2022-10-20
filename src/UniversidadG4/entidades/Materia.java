@@ -1,4 +1,4 @@
-package UniversidadG4;
+package UniversidadG4.entidades;
 
 public class Materia  {
 
