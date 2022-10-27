@@ -5,10 +5,26 @@
  */
 package Universidad.data;
 
+import UniversidadG4.entidades.miConexion;
+import java.sql.Connection;
+
 /**
  *
  * @author canes
  */
 public class Inscripciondata {
+    private Connection con;
+
+    public Inscripciondata(Connection con) {
+        this.con = miConexion.buscarconexion();
+    }
+
+  
+    
+    
+    
+    
+    
+    
     
 }
