@@ -17,20 +17,20 @@ import java.util.logging.Logger;
  */
 public class miConexion {
 
-    private String url= "jdbc:mariadb://Localhost/Universidad";
-    private String usuario= "root";
-    private String password= "";
-    private Connection conexion;
+    private static String url= "jdbc:mariadb://Localhost/universidad";
+    private static String usuario= "root";
+    private static String password= "";
+    private static Connection conexion;
 
     public miConexion() {
     }
 
-    public Connection buscarconexion() {
+    public static Connection buscarconexion() {
         if (conexion==null){
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
                   conexion= DriverManager.getConnection(url, usuario, password);
-            } catch (SQLException |ClassNotFoundException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(miConexion.class.getName()).log(Level.SEVERE, null, ex);
             }}
              return conexion;

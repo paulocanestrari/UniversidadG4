@@ -5,11 +5,11 @@ import java.time.LocalDate;
 
 public class Alumno {
 
-    private int id_Alumno;
+    private int id_alumno;
 
     private Long dni;
 
-    private String Apellido;
+    private String apellido;
 
     private String nombre;
 
@@ -20,29 +20,29 @@ public class Alumno {
     public Alumno() {
     }
 
-    public Alumno(int id_Alumno, Long dni, String Apellido, String nombre, LocalDate fecha_nacimiento, boolean estado) {
-        this.id_Alumno = id_Alumno;
+    public Alumno(int id_alumno, Long dni, String Apellido, String nombre, LocalDate fecha_nacimiento, boolean estado) {
+        this.id_alumno = id_alumno;
         this.dni = dni;
-        this.Apellido = Apellido;
+        this.apellido = apellido;
         this.nombre = nombre;
         this.fecha_nacimiento = fecha_nacimiento;
         this.estado = estado;
     }
 
-    public Alumno(Long dni, String Apellido, String nombre, LocalDate fecha_nacimiento, boolean estado) {
+    public Alumno(Long dni, String apellido, String nombre, LocalDate fecha_nacimiento, boolean estado) {
         this.dni = dni;
-        this.Apellido = Apellido;
+        this.apellido = apellido;
         this.nombre = nombre;
         this.fecha_nacimiento = fecha_nacimiento;
         this.estado = estado;
     }
 
-    public int getId_Alumno() {
-        return id_Alumno;
+    public int getId_alumno() {
+        return id_alumno;
     }
 
-    public void setId_Alumno(int id_Alumno) {
-        this.id_Alumno = id_Alumno;
+    public void setId_alumno(int id_Alumno) {
+        this.id_alumno = id_Alumno;
     }
 
     public Long getDni() {
@@ -54,11 +54,11 @@ public class Alumno {
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
+        this.apellido = Apellido;
     }
 
     public String getNombre() {
@@ -77,7 +77,7 @@ public class Alumno {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
@@ -87,7 +87,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "id_Alumno=" + id_Alumno + ", dni=" + dni + ", Apellido=" + Apellido + ", nombre=" + nombre + ", fecha_nacimiento=" + fecha_nacimiento + ", estado=" + estado + '}';
+        return "Alumno{" + "id_Alumno=" + id_alumno + ", dni=" + dni + ", Apellido=" + apellido + ", nombre=" + nombre + ", fecha_nacimiento=" + fecha_nacimiento + ", estado=" + estado + '}';
     }
 
    
