@@ -129,15 +129,15 @@ public class Alumnodata {
     
     
     public void actualizaAlumno(Alumno alumno){
-        String sql="UPDATE alumnos SET dni=?, apellido = ?, nombre = ?, fechaNacimiento = ?, estado=? WHERE idAlumno=?";
+        String sql="UPDATE alumnos SET dni=?, apellido = ?, nombre = ?, fecha_nacimiento = ?, estado=? WHERE id_alumno=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
-            ps.setInt(1, alumno.getDni());
+            ps.setLong(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
-            ps.setBoolean(5, alumno.isEstado());
-            ps.setInt(6, alumno.getIdAlumno());
+            ps.setDate(4, Date.valueOf(alumno.getFecha_nacimiento()));
+            ps.setBoolean(5, alumno.getEstado());
+            ps.setInt(6, alumno.getId_alumno());
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Datos del alumno actualizados");
