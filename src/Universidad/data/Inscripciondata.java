@@ -5,6 +5,7 @@
  */
 package Universidad.data;
 
+import UniversidadG4.entidades.Inscripcion;
 import UniversidadG4.entidades.miConexion;
 import java.sql.Connection;
 
@@ -18,7 +19,16 @@ public class Inscripciondata {
     public Inscripciondata(Connection con) {
         this.con = miConexion.buscarconexion();
     }
+public void guardarInscripcion (Inscripcion ins){
+}
+public Inscripcion obtenerInscripcion (int id_alumno , int id_materia);
 
+return null;
+}
+
+
+
+}
   
     
     
