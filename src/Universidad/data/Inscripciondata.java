@@ -111,34 +111,62 @@ public void actualizarNota (int id_alumno, int id_materia, double nota){
             JOptionPane.showMessageDialog(null, "inscripcionData Sentencia SQL erronea-actualizar nota");
         }
     }
-public ArrayList <Materia> obtenermateriasInscriptas ( Alumno alumno){
+public ArrayList <Materia> obtenermateriasInscriptas (Alumno alumno){
   ArrayList <Materia> ml= new ArrayList();
-  Materia ma
-    String sql="SELECT id_materia FROM inscripcion  WHERE id_alumno=? ";
+  Materia mat= new Materia();
+  String sql="SELECT id_materia FROM inscripcion  WHERE id_alumno=? ";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
-            ps.setInt(1,);
-            
-           
-            ps.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null, "Nota actualizada");
-            
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "inscripcionData Sentencia SQL erronea-actualizar nota");
+            ps.setInt(1,alumno.getId_alumno());
+            ResultSet rs= ps.executeQuery();
+           while (rs.next()){
+            ml.add(ma.obtenerMateriaPorId(rs.getInt("id_materia")));
         }
-    }
-
-
-
-
-}  
-    
-    
-    
-    
-    
-    
+            ps.close();
+           JOptionPane.showMessageDialog(null, "Se obtubo lista con materias inscriptas");
+           } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "inscripcionData Sentencia SQL erronea-obtenermateriainscriptas ");
+        }
+        return ml;
 }
+public ArrayList <Materia> obtenermateriasNOInscriptas ( Alumno alumno){
+  ArrayList <Materia> ml= new ArrayList();
+  Materia mat= new Materia();
+  String sql="SELECT id_materia FROM inscripcion WHERE id_materia NOT IN (SELECT id_materia FROM inscripcion WHERE id_alumno =?)";
+          try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1,alumno.getId_alumno());
+            ResultSet rs= ps.executeQuery();
+           while (rs.next()){
+               ml.add(ma.obtenerMateriaPorId(rs.getInt("id_materia")));
+        }
+           ps.close();
+           JOptionPane.showMessageDialog(null, "Se obtubo lista con materias NOinscriptas");
+             
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "inscripcionData Sentencia SQL erronea-obtenermateriaNOinscriptas ");
+        }
+     return ml;
+  }
+public ArrayList <Alumno> obtenerAlumnosinscriptos ( Materia materia){
+  ArrayList <Alumno> listal= new ArrayList();
+  Alumno alu= new Alumno();
+  String sql="SELECT id_alumno FROM inscripcion WHERE id_materia=?";
+          try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1,materia.getId_materia());
+            ResultSet rs= ps.executeQuery();
+           while (rs.next()){
+               listal.add(al.obtenerAlumnoPorId(rs.getInt("id_alumno")));
+        }
+           ps.close();
+           JOptionPane.showMessageDialog(null, "Se obtubo lista con Alumnos inscriptos");
+             
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "inscripcionData Sentencia SQL erronea-obteneralumnoinscriptos ");
+        }
+     return listal;
+  }
+
+
+  }
