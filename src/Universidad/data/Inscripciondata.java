@@ -33,11 +33,12 @@ public class Inscripciondata {
     }
    
 public void guardarInscripcion (Inscripcion ins){
-  String sql="INSERT INTO `inscripcion`(`id_alumno`, `id_materia`) VALUES ?,?)";
+  String sql="INSERT INTO inscripcion(id_alumno, id_materia, nota) VALUES ( ?, ?, ?)";
         try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,ins.getAlumno().getId_alumno());
             ps.setInt(2,ins.getMateria().getId_materia());
+            ps.setDouble(3, ins.getNota());
             ps.executeUpdate();
             
             ResultSet rs=ps.getGeneratedKeys();
@@ -49,15 +50,18 @@ public void guardarInscripcion (Inscripcion ins){
             ps.close();           
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "no se pudo Inscribir!");
+            
+            System.out.println(ex.getMessage());
         }}  
 public Inscripcion obtenerInscripcion (int id_alumno , int id_materia){
 Inscripcion in=null;
-        String sql = "SELECT  `id_alumno`, `id_materia`, `nota` FROM `inscripcion` WHERE id_materia=? AND id_alumno =?";
+        String sql = "SELECT  `id_alumno`, `id_materia`, `nota` FROM `inscripcion` WHERE id_materia= ? AND id_alumno = ?";
 try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1,id_alumno);
             ps.setInt(2,id_materia);
             ResultSet rs= ps.executeQuery();
+            
             if(rs.next()){
             in = new Inscripcion();
                 in.setAlumno(al.obtenerAlumnoPorId(rs.getInt("id_alumno")));
@@ -68,7 +72,8 @@ try {
             }          
             ps.close();           
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al procesar Obtener Inscribir!");
+            JOptionPane.showMessageDialog(null, "Error al procesar Obtener Inscribir!"+ ex.getMessage());
+            System.out.println(ex.getMessage());
         }
       
     if (in==null) {
@@ -95,7 +100,7 @@ String sql = " DELETE FROM inscripcion WHERE id_alumno =? AND id_materia =?";
         }
 }
 public void actualizarNota (int id_alumno, int id_materia, double nota){
- String sql="UPDATE incripcion SET nota=? WHERE id_alumno=? AND id_materia=?";
+ String sql="UPDATE inscripcion SET nota=? WHERE id_alumno= ? AND id_materia= ?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setDouble(1,nota);
@@ -141,7 +146,7 @@ public ArrayList <Materia> obtenermateriasNOInscriptas ( Alumno alumno){
                ml.add(ma.obtenerMateriaPorId(rs.getInt("id_materia")));
         }
            ps.close();
-           JOptionPane.showMessageDialog(null, "Se obtubo lista con materias NOinscriptas");
+           JOptionPane.showMessageDialog(null, "Se obtubo lista con materias NO inscriptas");
              
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "inscripcionData Sentencia SQL erronea-obtenermateriaNOinscriptas ");

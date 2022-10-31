@@ -28,18 +28,21 @@ public class Materiadata {
         this.con = miConexion.buscarconexion();
     }
 public void guardarMateria(Materia materia){
-        String sql= "INSERT INTO `materia`( `nombre`, `anio`, `estado`) VALUES (?,?,?)";
+    
+        String sql= "INSERT INTO materia( nombre, anio, estado) VALUES ( ?, ?, ?)";
          try {
              PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
              ps.setString(1, materia.getNombre() );
              ps.setInt(2, materia.getAnio());
              ps.setBoolean(3, materia.isEstado());
+             ps.executeUpdate();
               ResultSet rs=ps.getGeneratedKeys();
             if(rs.next()){
             
                 materia.setId_materia(rs.getInt(1));
                 
-                JOptionPane.showMessageDialog(null, "Materia agregada exitosamente!");           
+                JOptionPane.showMessageDialog(null, "Materia agregada exitosamente!");       
+                
             }          
             ps.close(); 
                     
@@ -102,7 +105,7 @@ public ArrayList<Materia> obtenerMateria(){
         return ma;
     }
         public void borrarMateria (int id) {
-        String sql="UPDATE Materia SET estado=0 WHERE id_materia=?";
+        String sql="UPDATE materia SET estado=0 WHERE id_materia=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);

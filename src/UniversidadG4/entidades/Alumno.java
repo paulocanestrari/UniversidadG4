@@ -7,7 +7,7 @@ public class Alumno {
 
     private int id_alumno;
 
-    private Long dni;
+    private long dni;
 
     private String apellido;
 
@@ -29,7 +29,7 @@ public class Alumno {
         this.estado = estado;
     }
 
-    public Alumno(Long dni, String apellido, String nombre, LocalDate fecha_nacimiento, boolean estado) {
+    public Alumno(long dni, String apellido, String nombre, LocalDate fecha_nacimiento, boolean estado) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
