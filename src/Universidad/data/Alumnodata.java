@@ -113,7 +113,7 @@ public class Alumnodata {
     
     
     public void borrarAlumno (int id){
-        String sql="UPDATE alumno SET estado=0 WHERE id_alumno=?";
+        String sql="DELETE FROM alumno WHERE id_alumno=? AND estado=0";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);

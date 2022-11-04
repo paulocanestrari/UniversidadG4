@@ -22,8 +22,8 @@ public class UniversidadG4 {
        
        
        
-       /*
        
+   
        //******metodos alumno data********
        
        Alumno alumno1 = new Alumno (31486515,"Canestrari","paulo",LocalDate.of(1985, 6, 7),true);
@@ -37,18 +37,17 @@ public class UniversidadG4 {
             
         }
         
-        Alumno a= alumData1.obtenerAlumnoPorId(1);
+        Alumno a= alumData1.obtenerAlumnoPorId(3);
+         System.out.println(a);
+        /*alumData1.borrarAlumno(2);
         
-        alumData1.borrarAlumno(2);
-        
-        
-        /*
-        a.setApellido("Pepe");
-        alumData1.actualizaAlumno(a);
         */
         
+        a.setApellido("Oroz");
+        alumData1.actualizaAlumno(a);
+        System.out.println(a);
         
-        
+           
         
         
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
@@ -85,7 +84,7 @@ public class UniversidadG4 {
        //*********metodos incripcion data**********
       
        Inscripcion inscripcion1 = new Inscripcion(alumno1,materia1,-1);
-       */
+       
        Inscripciondata inscripcionData1= new Inscripciondata();
        
        //inscripcionData1.guardarInscripcion(inscripcion1);
@@ -93,7 +92,7 @@ public class UniversidadG4 {
        
        
        
-        System.out.println(inscripcionData1.obtenerInscripcion(18, 16)); //no anda
+        System.out.println(inscripcionData1.obtenerInscripcion(1, 2)); 
        
        
        
