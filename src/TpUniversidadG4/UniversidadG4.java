@@ -22,56 +22,56 @@ public class UniversidadG4 {
        
        
        
-       
+       /*
        
        //******metodos alumno data********
        
-       //Alumno alumno1 = new Alumno (41841566,"Perez","Carlos",LocalDate.of(1998, 4, 20),true);
+       Alumno alumno1 = new Alumno (31486515,"Canestrari","paulo",LocalDate.of(1985, 6, 7),true);
        Alumnodata alumData1= new Alumnodata();
        
-       //alumData1.guardarAlumno(alumno1);
+       alumData1.guardarAlumno(alumno1);
        
         
-        /*for (Alumno aux : alumData1.obtenerAlumnos()) {
+        for (Alumno aux : alumData1.obtenerAlumnos()) {
             System.out.println(aux.getApellido() + " "+ aux.getNombre());
             
-        }*/
+        }
         
         Alumno a= alumData1.obtenerAlumnoPorId(1);
         
-        //alumData1.borrarAlumno(2);
+        alumData1.borrarAlumno(2);
         
         
         /*
-        a.setApellido("Adamek");
-        alumData1.actualizaAlumno(a);*/
-        
+        a.setApellido("Pepe");
+        alumData1.actualizaAlumno(a);
+        */
         
         
         
         
         
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
-        
+       /* 
         
         //*******metodos Materia data*******
-        //Materia materia1 = new Materia("web 2",2,true);
+        Materia materia1 = new Materia("web 2",2,true);
         Materiadata materiaData1= new Materiadata();
         
-       // materiaData1.guardarMateria(materia1);
+        materiaData1.guardarMateria(materia1);
        
-      /*  for (Materia aux : materiaData1.obtenerMateria()) {
+        for (Materia aux : materiaData1.obtenerMateria()) {
             System.out.println(aux.getNombre()+" año "+ aux.getAnio());
             
-        }*/
+        }
       Materia m= materiaData1.obtenerMateriaPorId(8);
       
        
        
-       //materiaData1.borrarMateria(3);
+       materiaData1.borrarMateria(3);
        
-      // m.setNombre("Calculo 1");
-       // materiaData1.actualizaMateria(m);
+       m.setNombre("Calculo 1");
+        materiaData1.actualizaMateria(m);
        
        
        
@@ -84,7 +84,8 @@ public class UniversidadG4 {
        
        //*********metodos incripcion data**********
       
-       //Inscripcion inscripcion1 = new Inscripcion(alumno1,materia1,9.5);
+       Inscripcion inscripcion1 = new Inscripcion(alumno1,materia1,-1);
+       */
        Inscripciondata inscripcionData1= new Inscripciondata();
        
        //inscripcionData1.guardarInscripcion(inscripcion1);
@@ -92,7 +93,7 @@ public class UniversidadG4 {
        
        
        
-       // System.out.println(inscripcionData1.obtenerInscripcion(1, 2)); no anda
+        System.out.println(inscripcionData1.obtenerInscripcion(18, 16)); //no anda
        
        
        

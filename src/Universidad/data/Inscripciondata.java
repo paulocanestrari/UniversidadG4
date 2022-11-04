@@ -55,7 +55,7 @@ public void guardarInscripcion (Inscripcion ins){
         }}  
 public Inscripcion obtenerInscripcion (int id_alumno , int id_materia){
 Inscripcion in=null;
-        String sql = "SELECT  `id_alumno`, `id_materia`, `nota` FROM `inscripcion` WHERE id_materia= ? AND id_alumno = ?";
+        String sql = "SELECT  id_inscripcion, id_alumno, id_materia, nota FROM inscripcion WHERE id_alumno= ? AND id_materia = ?";
 try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1,id_alumno);
@@ -68,7 +68,7 @@ try {
                 in.setMateria(ma.obtenerMateriaPorId(rs.getInt("id_materia")));
                 in.setNota(rs.getInt("nota"));
                 in.setId_inscripcion(rs.getInt("id_inscripcion"));
-                          
+                           JOptionPane.showMessageDialog(null, "Si esta inscripto !");
             }          
             ps.close();           
         } catch (SQLException ex) {
