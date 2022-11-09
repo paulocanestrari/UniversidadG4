@@ -32,10 +32,13 @@ public class Principal extends javax.swing.JFrame {
         menuArchivo = new javax.swing.JMenu();
         menuSalir = new javax.swing.JMenuItem();
         menuMateria = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         menuAlumno = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuInscripciones = new javax.swing.JMenu();
         menuCargaDeNotas = new javax.swing.JMenu();
         menuConsultas = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,9 +69,22 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(menuArchivo);
 
         menuMateria.setText("Materias");
+
+        jMenuItem2.setText("Agregar materia");
+        menuMateria.add(jMenuItem2);
+
         jMenuBar1.add(menuMateria);
 
         menuAlumno.setText("Alumnos");
+
+        jMenuItem3.setText("Agregar o buscar alumno");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menuAlumno.add(jMenuItem3);
+
         jMenuBar1.add(menuAlumno);
 
         menuInscripciones.setText("Inscripciones");
@@ -78,6 +94,15 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(menuCargaDeNotas);
 
         menuConsultas.setText("Consultas");
+
+        jMenuItem1.setText("Alumnos inscriptos por materia");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuConsultas.add(jMenuItem1);
+
         jMenuBar1.add(menuConsultas);
 
         setJMenuBar(jMenuBar1);
@@ -99,6 +124,18 @@ public class Principal extends javax.swing.JFrame {
     private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_menuSalirActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        ListadoAlumnosPorMateria a = new ListadoAlumnosPorMateria();
+        escritorio.add(a);
+        a.show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        FormularioAlumno fm = new FormularioAlumno();
+        escritorio.add(fm);
+        fm.show();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +176,9 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu menuAlumno;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuCargaDeNotas;

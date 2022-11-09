@@ -5,6 +5,13 @@
  */
 package Vistas;
 
+import Universidad.data.Inscripciondata;
+import Universidad.data.Materiadata;
+import UniversidadG4.entidades.Alumno;
+import UniversidadG4.entidades.Materia;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alvar
@@ -39,7 +46,7 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Listado de akumnos por materia");
+        setTitle("Listado de alumnos por materia");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -51,6 +58,11 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel3.setText("Materia");
 
         cbMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMateriasActionPerformed(evt);
+            }
+        });
 
         Tabla3.setBackground(new java.awt.Color(204, 204, 204));
         Tabla3.setModel(new javax.swing.table.DefaultTableModel(
@@ -61,7 +73,7 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
                 {null, null, null}
             },
             new String [] {
-                "ID", "NOMBRE", "NOTA"
+                "ID", "NOMBRE", "APELLIDO"
             }
         ));
         jScrollPane1.setViewportView(Tabla3);
@@ -109,9 +121,32 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        getAccessibleContext().setAccessibleName("Listado de alumnos por materia");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMateriasActionPerformed
+        armarTablaAlum();
+    }//GEN-LAST:event_cbMateriasActionPerformed
+
+    private void armarTablaAlum() {
+        
+        Inscripciondata ins = new Inscripciondata();
+        ArrayList<Alumno> alumlis = new ArrayList();
+        alumlis = ins.obtenerAlumnosinscriptos((Materia) cbMaterias.getSelectedItem());
+       // cbMaterias.add(mat.obtenerMateria());
+        String datos[] = new String[3];
+        DefaultTableModel tabla = (DefaultTableModel) Tabla3.getModel();
+        tabla.setNumRows(0);
+        for (Alumno i : alumlis) {
+            datos[0] = i.getId_alumno()+ "";
+            datos[1] = i.getApellido();
+            datos[2] = i.getNombre();
+            
+            tabla.addRow(datos);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla3;
