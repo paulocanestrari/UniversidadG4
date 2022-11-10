@@ -20,13 +20,13 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 Materiadata mateD;
 Alumnodata alum;
     Inscripciondata insd;
-    DefaultTableModel tabla;
+  
     public FormularioInscripcion() {
         initComponents();
         alum=new Alumnodata();
         mateD= new Materiadata();
         insd= new Inscripciondata();
-        tabla= new DefaultTableModel();
+       
         llenarcomboBox();
         borrarfilasTablas();
     }
@@ -47,7 +47,7 @@ Alumnodata alum;
         btInscriptas = new javax.swing.JRadioButton();
         btNoInscriptas = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablam = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         btInscribir = new javax.swing.JButton();
         btAnularInscripcion = new javax.swing.JButton();
         btSalir = new javax.swing.JButton();
@@ -93,24 +93,19 @@ Alumnodata alum;
             }
         });
 
-        tablam.setBackground(new java.awt.Color(204, 204, 204));
-        tablam.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setBackground(new java.awt.Color(204, 204, 204));
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
                 "ID", "NOMBRE", "AÑO"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tablam);
+        ));
+        jScrollPane1.setViewportView(tabla);
 
         btInscribir.setText("Inscribir");
         btInscribir.setEnabled(false);
@@ -213,7 +208,7 @@ Alumnodata alum;
 
     private void btInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscribirActionPerformed
        Alumno alu= (Alumno)cbAlumnos.getSelectedItem();
-       int fila= tablam.getSelectedRow();
+       int fila= tabla.getSelectedRow();
        if (alu!=null && fila!=-1){
        int id= (Integer)tabla.getValueAt(fila, 0);
        String nombre=(String) tabla.getValueAt(fila, 1);
@@ -233,7 +228,7 @@ Alumnodata alum;
 
     private void btAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnularInscripcionActionPerformed
           Alumno alu= (Alumno)cbAlumnos.getSelectedItem();
-       int fila= tablam.getSelectedRow();
+       int fila= tabla.getSelectedRow();
        if (alu!=null && fila!=-1){
        int idm= (Integer)tabla.getValueAt(fila, 0);
        int ida= (Integer)alu.getId_alumno();
@@ -257,7 +252,7 @@ Alumnodata alum;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablam;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 
     private void llenarcomboBox() {
@@ -268,17 +263,26 @@ Alumnodata alum;
     }
 
     private void borrarfilasTablas() {
-        tablam.removeAll();
+        tabla.removeAll();
     }
 
     private void cargarMateriasinscriptas() {
         
       borrarfilasTablas();
       Alumno elegido= (Alumno) cbAlumnos.getSelectedItem();
-      if (elegido!=null){
+        
+        
+      if (elegido !=null){
       ArrayList <Materia> materias= insd.obtenermateriasInscriptas(elegido);
-        for (Materia ma : materias) {
-            tabla.addRow(new Object[]{ma.getId_materia(),ma.getNombre(),ma.getAnio()});}
+       String datos[] = new String[3];
+        DefaultTableModel tablal = (DefaultTableModel) tabla.getModel();
+        tablal.setNumRows(0);
+        for (Materia i : materias ) {
+            datos[0] = i.getId_materia()+ "";
+            datos[1] = i.getNombre();
+            datos[2] = String.valueOf(i.getAnio());
+            
+            tablal.addRow(datos);}
         }else {
                 JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno!" );
                 }
@@ -286,11 +290,14 @@ Alumnodata alum;
 
     private void cargarMateriasnoinscriptas() {
       borrarfilasTablas();
+       DefaultTableModel tablal = (DefaultTableModel) tabla.getModel();
       Alumno elegido= (Alumno) cbAlumnos.getSelectedItem();
+     
       if (elegido!=null){
+          System.out.println(elegido);
       ArrayList <Materia> materias= insd.obtenermateriasNOInscriptas(elegido);
         for (Materia ma : materias) {
-           tabla.addRow(new Object[]{ma.getId_materia(),ma.getNombre(),ma.getAnio()}); 
+           tablal.addRow(new Object[]{ma.getId_materia(),ma.getNombre(),ma.getAnio()}); 
         }
         }else {
                 JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno!" );

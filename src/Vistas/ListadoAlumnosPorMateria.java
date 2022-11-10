@@ -6,7 +6,6 @@
 package Vistas;
 
 import Universidad.data.Inscripciondata;
-import Universidad.data.Materiadata;
 import UniversidadG4.entidades.Alumno;
 import UniversidadG4.entidades.Materia;
 import java.util.ArrayList;
