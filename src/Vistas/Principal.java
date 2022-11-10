@@ -36,6 +36,7 @@ public class Principal extends javax.swing.JFrame {
         menuAlumno = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         menuInscripciones = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         menuCargaDeNotas = new javax.swing.JMenu();
         menuConsultas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -71,6 +72,11 @@ public class Principal extends javax.swing.JFrame {
         menuMateria.setText("Materias");
 
         jMenuItem2.setText("Agregar materia");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         menuMateria.add(jMenuItem2);
 
         jMenuBar1.add(menuMateria);
@@ -88,6 +94,15 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(menuAlumno);
 
         menuInscripciones.setText("Inscripciones");
+
+        jMenuItem4.setText("Formulario de inscripciones");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuInscripciones.add(jMenuItem4);
+
         jMenuBar1.add(menuInscripciones);
 
         menuCargaDeNotas.setText("Carga de notas");
@@ -137,6 +152,20 @@ public class Principal extends javax.swing.JFrame {
         fm.show();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+         FormularioMateria ma = new FormularioMateria();
+        escritorio.add(ma);
+        ma.show();
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+          FormularioInscripcion ins = new FormularioInscripcion();
+        escritorio.add(ins);
+        ins.show();
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,6 +208,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenu menuAlumno;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuCargaDeNotas;
