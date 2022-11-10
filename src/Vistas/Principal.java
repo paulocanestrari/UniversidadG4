@@ -11,11 +11,16 @@ package Vistas;
  */
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Pruncipal
-     */
+     FormularioMateria ma;
+      FormularioAlumno fm;
+        FormularioInscripcion ins;
+         ListadoAlumnosPorMateria a;
     public Principal() {
         initComponents();
+         ins = new FormularioInscripcion();
+        ma = new FormularioMateria();
+        fm = new FormularioAlumno();
+         a = new ListadoAlumnosPorMateria();
     }
 
     /**
@@ -141,29 +146,51 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSalirActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        ListadoAlumnosPorMateria a = new ListadoAlumnosPorMateria();
+       if(a.isShowing()){
+           dispose();
+           escritorio.add(a);
+            a.show();
+       }else{
         escritorio.add(a);
         a.show();
+       }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        FormularioAlumno fm = new FormularioAlumno();
+          if(fm.isShowing()){
+        fm.dispose();
         escritorio.add(fm);
         fm.show();
+          }else{
+        escritorio.add(fm);
+        fm.show();
+          }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-         FormularioMateria ma = new FormularioMateria();
+          
+       if(ma.isShowing()){
+           ma.dispose();
+           escritorio.add(ma);
+           ma.show();
+        
+       }else
+	{    
         escritorio.add(ma);
         ma.show();
         
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    }
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-          FormularioInscripcion ins = new FormularioInscripcion();
+     
+       if(ins.isShowing()){
+          ins.dispose();
+          escritorio.add(ins);
+          ins.show();
+       }else{
         escritorio.add(ins);
         ins.show();
-        
+       }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
