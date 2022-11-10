@@ -6,6 +6,7 @@
 package Vistas;
 
 import Universidad.data.Inscripciondata;
+import Universidad.data.Materiadata;
 import UniversidadG4.entidades.Alumno;
 import UniversidadG4.entidades.Materia;
 import java.util.ArrayList;
@@ -17,12 +18,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ListadoAlumnosPorMateria
-     */
+      Materiadata mateD;
     public ListadoAlumnosPorMateria() {
         initComponents();
+        mateD= new Materiadata();
+        llenarcomboBox();
     }
+    
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +60,6 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Materia");
 
-        cbMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbMateriasActionPerformed(evt);
@@ -120,8 +123,6 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        getAccessibleContext().setAccessibleName("Listado de alumnos por materia");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -149,10 +150,14 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla3;
-    private javax.swing.JComboBox<String> cbMaterias;
+    private javax.swing.JComboBox<Materia> cbMaterias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-}
+
+    private void llenarcomboBox() {
+         for (Materia aux : mateD.obtenerMateria()) {
+            cbMaterias.addItem(aux);}
+}}
