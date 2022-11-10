@@ -12,9 +12,9 @@ package Vistas;
 public class Principal extends javax.swing.JFrame {
 
      FormularioMateria ma;
-      FormularioAlumno fm;
-        FormularioInscripcion ins;
-         ListadoAlumnosPorMateria a;
+     FormularioAlumno fm;
+     FormularioInscripcion ins;
+     ListadoAlumnosPorMateria a;
     public Principal() {
         initComponents();
          ins = new FormularioInscripcion();

@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class FormularioInscripcion extends javax.swing.JInternalFrame {
 Materiadata mateD;
-    Alumnodata alum;
+Alumnodata alum;
     Inscripciondata insd;
     DefaultTableModel tabla;
     public FormularioInscripcion() {
