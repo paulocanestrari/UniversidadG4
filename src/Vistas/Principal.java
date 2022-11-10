@@ -11,11 +11,16 @@ package Vistas;
  */
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Pruncipal
-     */
+     FormularioMateria ma;
+     FormularioAlumno fm;
+     FormularioInscripcion ins;
+     ListadoAlumnosPorMateria a;
     public Principal() {
         initComponents();
+         ins = new FormularioInscripcion();
+        ma = new FormularioMateria();
+        fm = new FormularioAlumno();
+         a = new ListadoAlumnosPorMateria();
     }
 
     /**
@@ -36,6 +41,7 @@ public class Principal extends javax.swing.JFrame {
         menuAlumno = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         menuInscripciones = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         menuCargaDeNotas = new javax.swing.JMenu();
         menuConsultas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -71,6 +77,11 @@ public class Principal extends javax.swing.JFrame {
         menuMateria.setText("Materias");
 
         jMenuItem2.setText("Agregar materia");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         menuMateria.add(jMenuItem2);
 
         jMenuBar1.add(menuMateria);
@@ -88,6 +99,15 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(menuAlumno);
 
         menuInscripciones.setText("Inscripciones");
+
+        jMenuItem4.setText("Formulario de inscripciones");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuInscripciones.add(jMenuItem4);
+
         jMenuBar1.add(menuInscripciones);
 
         menuCargaDeNotas.setText("Carga de notas");
@@ -126,16 +146,52 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSalirActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        ListadoAlumnosPorMateria a = new ListadoAlumnosPorMateria();
+       if(a.isShowing()){
+           dispose();
+           escritorio.add(a);
+            a.show();
+       }else{
         escritorio.add(a);
         a.show();
+       }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        FormularioAlumno fm = new FormularioAlumno();
+          if(fm.isShowing()){
+        fm.dispose();
         escritorio.add(fm);
         fm.show();
+          }else{
+        escritorio.add(fm);
+        fm.show();
+          }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+          
+       if(ma.isShowing()){
+           ma.dispose();
+           escritorio.add(ma);
+           ma.show();
+        
+       }else
+	{    
+        escritorio.add(ma);
+        ma.show();
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+     
+       if(ins.isShowing()){
+          ins.dispose();
+          escritorio.add(ins);
+          ins.show();
+       }else{
+        escritorio.add(ins);
+        ins.show();
+       }
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +235,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenu menuAlumno;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuCargaDeNotas;
