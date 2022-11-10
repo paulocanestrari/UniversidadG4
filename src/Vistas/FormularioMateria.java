@@ -97,6 +97,11 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         });
 
         btGuardar.setText("Guardar");
+        btGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGuardarActionPerformed(evt);
+            }
+        });
 
         btBorrar.setText("Borrar");
         btBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -211,6 +216,10 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

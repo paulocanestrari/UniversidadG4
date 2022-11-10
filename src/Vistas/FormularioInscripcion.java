@@ -81,6 +81,11 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(TablaMaterias);
 
         btInscribir.setText("Inscribir");
+        btInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInscribirActionPerformed(evt);
+            }
+        });
 
         btAnularInscripcion.setText("Anular inscripción");
 
@@ -152,6 +157,10 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscribirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btInscribirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
