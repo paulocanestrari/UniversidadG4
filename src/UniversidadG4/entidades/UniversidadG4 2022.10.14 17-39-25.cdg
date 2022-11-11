@@ -2,7 +2,7 @@
 
 <ClassDiagram name="UniversidadG4">
   <ClassDiagramComponents>
-    <Class name="Alumno" package="UniversidadG4" visibility="public" xPosition="20.0" yPosition="20.0">
+    <Class name="Alumno" package="UniversidadG4" visibility="public" xPosition="2.0" yPosition="-9.0">
       <Fields>
         <Field name="id_Alumno" type="int" visibility="private"/>
         <Field name="dni" type="Long" visibility="private"/>
@@ -57,7 +57,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Inscripcion" package="UniversidadG4" visibility="public" xPosition="320.0" yPosition="20.0">
+    <Class name="Inscripcion" package="UniversidadG4" visibility="public" xPosition="215.0" yPosition="567.0">
       <Fields>
         <Field name="id_inscripcion" type="int" visibility="private"/>
         <Field name="alumno" type="Alumno" visibility="private"/>
@@ -98,7 +98,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Materia" package="UniversidadG4" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="Materia" package="UniversidadG4" visibility="public" xPosition="736.0" yPosition="31.0">
       <Fields>
         <Field name="id_materia" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -141,9 +141,9 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="UniversidadG4.Inscripcion" target="UniversidadG4.Materia" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="materia" source="UniversidadG4.Inscripcion" target="UniversidadG4.Materia" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="UniversidadG4.Inscripcion" target="UniversidadG4.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="alumno" source="UniversidadG4.Inscripcion" target="UniversidadG4.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="UniversidadG4.Inscripcion" target="UniversidadG4.Materia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="UniversidadG4.Inscripcion" target="UniversidadG4.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

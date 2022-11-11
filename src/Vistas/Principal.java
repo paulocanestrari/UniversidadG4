@@ -15,12 +15,14 @@ public class Principal extends javax.swing.JFrame {
      FormularioAlumno fm;
      FormularioInscripcion ins;
      ListadoAlumnosPorMateria a;
+     FormularioCargaNotas fn;
     public Principal() {
         initComponents();
          ins = new FormularioInscripcion();
         ma = new FormularioMateria();
         fm = new FormularioAlumno();
          a = new ListadoAlumnosPorMateria();
+         fn= new FormularioCargaNotas();
     }
 
     /**
@@ -43,6 +45,7 @@ public class Principal extends javax.swing.JFrame {
         menuInscripciones = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         menuCargaDeNotas = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         menuConsultas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -111,6 +114,15 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(menuInscripciones);
 
         menuCargaDeNotas.setText("Carga de notas");
+
+        jMenuItem5.setText("Cargar notas");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        menuCargaDeNotas.add(jMenuItem5);
+
         jMenuBar1.add(menuCargaDeNotas);
 
         menuConsultas.setText("Consultas");
@@ -193,6 +205,17 @@ public class Principal extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        if(fn.isShowing()){
+        fn.dispose();
+        escritorio.add(fn);
+        fn.show();
+          }else{
+        escritorio.add(fn);
+        fn.show();
+          }
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,6 +259,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenu menuAlumno;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuCargaDeNotas;

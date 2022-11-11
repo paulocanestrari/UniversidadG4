@@ -53,13 +53,14 @@ public void guardarInscripcion (Inscripcion ins){
             
             System.out.println(ex.getMessage());
         }}  
-public Inscripcion obtenerInscripcion (int id_alumno , int id_materia){
+
+public Inscripcion obtenerInscripcion (int id_alumno, int id_materia ){
 Inscripcion in=null;
-        String sql = "SELECT  id_inscripcion, id_alumno, id_materia, nota FROM inscripcion WHERE id_alumno= ? AND id_materia = ?";
+        String sql = "SELECT  id_inscripcion, id_alumno, id_materia, nota FROM inscripcion WHERE id_alumno= ? AND id_materia=?";
 try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1,id_alumno);
-            ps.setInt(2,id_materia);
+            //ps.setInt(2,id_materia);
             ResultSet rs= ps.executeQuery();
             
             if(rs.next()){
@@ -80,6 +81,38 @@ try {
      JOptionPane.showMessageDialog(null, "No esta inscripto!");
 }
 return in;
+}
+
+
+public ArrayList <Inscripcion>  obtenerInscripciones (int id_alumno ){
+ArrayList <Inscripcion> ins=new ArrayList();
+Inscripcion in=null;
+        String sql = "SELECT  id_inscripcion, id_alumno, id_materia, nota FROM inscripcion WHERE id_alumno= ?";
+try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1,id_alumno);
+            //ps.setInt(2,id_materia);
+            ResultSet rs= ps.executeQuery();
+            
+            if(rs.next()){
+            in = new Inscripcion();
+                in.setAlumno(al.obtenerAlumnoPorId(rs.getInt("id_alumno")));
+                in.setMateria(ma.obtenerMateriaPorId(rs.getInt("id_materia")));
+                in.setNota(rs.getInt("nota"));
+                in.setId_inscripcion(rs.getInt("id_inscripcion"));
+                ins.add(in);
+                           JOptionPane.showMessageDialog(null, "Si esta inscripto !");
+            }          
+            ps.close();           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al procesar Obtener Inscribir!"+ ex.getMessage());
+            System.out.println(ex.getMessage());
+        }
+      
+    if (in==null) {
+     JOptionPane.showMessageDialog(null, "No esta inscripto!");
+}
+return ins;
 }
 public void borrarInscripcion (int id_alumno, int id_materia){
 String sql = " DELETE FROM inscripcion WHERE id_alumno =? AND id_materia =?";

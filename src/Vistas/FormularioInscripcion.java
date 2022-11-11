@@ -124,6 +124,11 @@ Alumnodata alum;
         });
 
         btSalir.setText("Salir");
+        btSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,6 +244,10 @@ Alumnodata alum;
        }else{ JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno y una materia" );}
            
     }//GEN-LAST:event_btAnularInscripcionActionPerformed
+
+    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

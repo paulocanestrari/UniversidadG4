@@ -78,6 +78,12 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         btEstado.setText("Estado");
         btEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        tfLegajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfLegajoActionPerformed(evt);
+            }
+        });
+
         btBuscar.setText("Buscar");
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,6 +255,10 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jFechas.setDate(date);
         this.btEstado.setSelected(alumno.getEstado());
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void tfLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLegajoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLegajoActionPerformed
     
     private void limpiarCampos(){
         tfApellido.setText("");
