@@ -121,24 +121,21 @@ String sql = " DELETE FROM inscripcion WHERE id_alumno =? AND id_materia =?";
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id_alumno);
             ps.setInt(2, id_materia);
-            
             ps.executeUpdate();//
-            
             JOptionPane.showMessageDialog(null, "Se elimino correctamente la inscripción");
-            
             ps.close();
             
     }   catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo borrar Inscripción");
         }
 }
-public void actualizarNota (int id_alumno, int id_materia, double nota){
- String sql="UPDATE inscripcion SET nota=? WHERE id_alumno= ? AND id_materia= ?";
+public void actualizarNota (int id_inscripcion, double nota){
+ String sql="UPDATE inscripcion SET nota=? WHERE id_inscripcion=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setDouble(1,nota);
-            ps.setInt(2,id_alumno);
-            ps.setInt(3,id_materia);
+            ps.setInt(2,id_inscripcion);
+           
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Nota actualizada");
