@@ -16,7 +16,7 @@ public class UniversidadG4 {
 
     
     public static void main(String[] args) {
-        
+        /*
        miConexion com =new miConexion();
        Connection po=com.buscarconexion();
        
@@ -41,7 +41,7 @@ public class UniversidadG4 {
          System.out.println(a);
         /*alumData1.borrarAlumno(2);
         
-        */
+        
         
         a.setApellido("Oroz");
         alumData1.actualizaAlumno(a);

@@ -19,14 +19,15 @@ import javax.swing.table.DefaultTableModel;
 public class FormularioInscripcion extends javax.swing.JInternalFrame {
 Materiadata mateD;
 Alumnodata alum;
-    Inscripciondata insd;
+Inscripciondata insd;
+DefaultTableModel tablal;
   
     public FormularioInscripcion() {
         initComponents();
         alum=new Alumnodata();
         mateD= new Materiadata();
         insd= new Inscripciondata();
-       
+       tablal = (DefaultTableModel) tabla.getModel();
         llenarcomboBox();
         borrarfilasTablas();
     }
@@ -96,10 +97,7 @@ Alumnodata alum;
         tabla.setBackground(new java.awt.Color(204, 204, 204));
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "ID", "NOMBRE", "AÑO"
@@ -198,21 +196,24 @@ Alumnodata alum;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscriptasActionPerformed
-    btNoInscriptas.setSelected(false);
-      btInscribir.setSelected(false);
-      btAnularInscripcion.setSelected(true);
+      btNoInscriptas.setSelected(false);
+      btInscribir.setEnabled(false);
+      btAnularInscripcion.setEnabled(true);
+        
       cargarMateriasinscriptas();
     }//GEN-LAST:event_btInscriptasActionPerformed
 
     private void btNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNoInscriptasActionPerformed
        btInscriptas.setSelected(false);
-        btInscribir.setSelected(true);
-      btAnularInscripcion.setSelected(false);
+        btInscribir.setEnabled(true);
+      btAnularInscripcion.setEnabled(false);
+     
       cargarMateriasnoinscriptas();
     }//GEN-LAST:event_btNoInscriptasActionPerformed
 
     private void btInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscribirActionPerformed
-       Alumno alu= (Alumno)cbAlumnos.getSelectedItem();
+
+        Alumno alu= (Alumno)cbAlumnos.getSelectedItem();
        int fila= tabla.getSelectedRow();
        if (alu!=null && fila!=-1){
        int id= (Integer)tabla.getValueAt(fila, 0);
@@ -221,26 +222,26 @@ Alumnodata alum;
        Materia ma= new Materia(id,nombre,ano, true);
        Inscripcion in= new Inscripcion(alu,ma,0);
        insd.guardarInscripcion(in);
-       borrarfilasTablas();
-       }else{ JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno y una materia" );}
+       tablal.removeRow(tabla.getSelectedRow());
+        }else{ JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno y una materia" );}
            
            
     }//GEN-LAST:event_btInscribirActionPerformed
 
     private void cbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAlumnosActionPerformed
-        // TODO add your handling code here:
+       borrarfilasTablas();
     }//GEN-LAST:event_cbAlumnosActionPerformed
 
     private void btAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnularInscripcionActionPerformed
-          Alumno alu= (Alumno)cbAlumnos.getSelectedItem();
+       Alumno alu= (Alumno)cbAlumnos.getSelectedItem();
        int fila= tabla.getSelectedRow();
        if (alu!=null && fila!=-1){
-       int idm= (Integer)tabla.getValueAt(fila, 0);
+       int idm= Integer.parseInt((String) tabla.getValueAt(fila, 0));
        int ida= (Integer)alu.getId_alumno();
       
        insd.borrarInscripcion(ida, idm);
+       tablal.removeRow(tabla.getSelectedRow());
        
-       borrarfilasTablas();
        }else{ JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno y una materia" );}
            
     }//GEN-LAST:event_btAnularInscripcionActionPerformed
@@ -272,7 +273,7 @@ Alumnodata alum;
     }
 
     private void borrarfilasTablas() {
-        tabla.removeAll();
+        tablal.setNumRows(0);
     }
 
     private void cargarMateriasinscriptas() {
@@ -284,8 +285,7 @@ Alumnodata alum;
       if (elegido !=null){
       ArrayList <Materia> materias= insd.obtenermateriasInscriptas(elegido);
        String datos[] = new String[3];
-        DefaultTableModel tablal = (DefaultTableModel) tabla.getModel();
-        tablal.setNumRows(0);
+        
         for (Materia i : materias ) {
             datos[0] = i.getId_materia()+ "";
             datos[1] = i.getNombre();
@@ -298,13 +298,14 @@ Alumnodata alum;
     }
 
     private void cargarMateriasnoinscriptas() {
-      borrarfilasTablas();
-       DefaultTableModel tablal = (DefaultTableModel) tabla.getModel();
+         borrarfilasTablas();
+       tablal = (DefaultTableModel) tabla.getModel();
       Alumno elegido= (Alumno) cbAlumnos.getSelectedItem();
      
       if (elegido!=null){
           System.out.println(elegido);
       ArrayList <Materia> materias= insd.obtenermateriasNOInscriptas(elegido);
+       
         for (Materia ma : materias) {
            tablal.addRow(new Object[]{ma.getId_materia(),ma.getNombre(),ma.getAnio()}); 
         }

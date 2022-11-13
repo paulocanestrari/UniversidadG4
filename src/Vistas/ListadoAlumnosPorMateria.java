@@ -22,7 +22,7 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
     public ListadoAlumnosPorMateria() {
         initComponents();
         mateD= new Materiadata();
-        llenarcomboBox();
+       
     }
     
 
@@ -60,6 +60,19 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Materia");
 
+        cbMaterias.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                cbMateriasMouseMoved(evt);
+            }
+        });
+        cbMaterias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbMateriasMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbMateriasMousePressed(evt);
+            }
+        });
         cbMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbMateriasActionPerformed(evt);
@@ -127,8 +140,21 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMateriasActionPerformed
+      
         armarTablaAlum();
     }//GEN-LAST:event_cbMateriasActionPerformed
+
+    private void cbMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbMateriasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbMateriasMouseClicked
+
+    private void cbMateriasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbMateriasMousePressed
+         // TODO add your handling code here:
+    }//GEN-LAST:event_cbMateriasMousePressed
+
+    private void cbMateriasMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbMateriasMouseMoved
+     llenarcomboBox();   
+    }//GEN-LAST:event_cbMateriasMouseMoved
 
     private void armarTablaAlum() {
         

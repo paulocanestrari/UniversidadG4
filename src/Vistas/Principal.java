@@ -21,7 +21,7 @@ public class Principal extends javax.swing.JFrame {
          ins = new FormularioInscripcion();
         ma = new FormularioMateria();
         fm = new FormularioAlumno();
-         a = new ListadoAlumnosPorMateria();
+         a = new ListadoAlumnosPorMateria();    
          fn= new FormularioCargaNotas();
     }
 
@@ -158,20 +158,21 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSalirActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       if(a.isShowing()){
+                                             
+        if(a.isShowing()){
            dispose();
-           escritorio.add(a);
-            a.show();
-       }else{
+          
+        a.show();
+          }else{
         escritorio.add(a);
         a.show();
-       }
+          }
+    
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
           if(fm.isShowing()){
         fm.dispose();
-        escritorio.add(fm);
         fm.show();
           }else{
         escritorio.add(fm);
@@ -183,7 +184,6 @@ public class Principal extends javax.swing.JFrame {
           
        if(ma.isShowing()){
            ma.dispose();
-           escritorio.add(ma);
            ma.show();
         
        }else
@@ -197,7 +197,6 @@ public class Principal extends javax.swing.JFrame {
      
        if(ins.isShowing()){
           ins.dispose();
-          escritorio.add(ins);
           ins.show();
        }else{
         escritorio.add(ins);
@@ -208,7 +207,6 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         if(fn.isShowing()){
         fn.dispose();
-        escritorio.add(fn);
         fn.show();
           }else{
         escritorio.add(fn);
