@@ -80,6 +80,11 @@ Inscripciondata in;
         });
 
         btCancelar.setText("Cancelar");
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,14 +144,21 @@ Inscripciondata in;
        
         Alumno alu= (Alumno)cbAlumnos.getSelectedItem();
        int fila= Tabla2.getSelectedRow();
+       
        if (alu!=null && fila!=-1){
-       int id= (Integer)Tabla2.getValueAt(fila, 0);
-       double nota= (Double) Tabla2.getValueAt(fila, 2);
-           System.out.println(id *nota);
+       int id= Integer.parseInt((String)Tabla2.getValueAt(fila, 0));
+       int nota= Integer.parseInt((String)Tabla2.getValueAt(fila, 2));
+          
       in.actualizarNota(id, nota);
-       }       
-     
+       }else { JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno y seleccionar una fila de la materia" );}
+        
+
     }//GEN-LAST:event_btGuardarActionPerformed
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+            dispose();
+        
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     private void armarTabla() {
       borrarfilasTablas();

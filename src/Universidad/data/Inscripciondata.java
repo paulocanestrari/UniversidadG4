@@ -69,7 +69,7 @@ try {
                 in.setMateria(ma.obtenerMateriaPorId(rs.getInt("id_materia")));
                 in.setNota(rs.getInt("nota"));
                 in.setId_inscripcion(rs.getInt("id_inscripcion"));
-                           JOptionPane.showMessageDialog(null, "Si esta inscripto !");
+                           
             }          
             ps.close();           
         } catch (SQLException ex) {
@@ -101,11 +101,11 @@ try {
                 in.setNota(rs.getInt("nota"));
                 in.setId_inscripcion(rs.getInt("id_inscripcion"));
                 ins.add(in);
-                           JOptionPane.showMessageDialog(null, "Si esta inscripto !");
+                          
             }          
             ps.close();           
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al procesar Obtener Inscribir!"+ ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al procesar Obtener Inscribciones!"+ ex.getMessage());
             System.out.println(ex.getMessage());
         }
       
