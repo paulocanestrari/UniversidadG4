@@ -21,7 +21,7 @@ public class Principal extends javax.swing.JFrame {
          ins = new FormularioInscripcion();
         ma = new FormularioMateria();
         fm = new FormularioAlumno();
-         a = new ListadoAlumnosPorMateria();    
+        
          fn= new FormularioCargaNotas();
     }
 
@@ -158,11 +158,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSalirActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-                                             
+            
+        a = new ListadoAlumnosPorMateria();                                        
         if(a.isShowing()){
            dispose();
-          
-        a.show();
+         a.show();
           }else{
         escritorio.add(a);
         a.show();

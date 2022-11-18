@@ -154,7 +154,7 @@ Inscripciondata in;
        
         Alumno alu= (Alumno)cbAlumnos.getSelectedItem();
        int fila= Tabla2.getSelectedRow();
-       
+      try { 
        if (alu!=null && fila!=-1){
        int id= Integer.parseInt((String)Tabla2.getValueAt(fila, 0));
        int nota= Integer.parseInt((String)Tabla2.getValueAt(fila, 2));
@@ -162,7 +162,11 @@ Inscripciondata in;
       in.actualizarNota(id, nota);
        }else { JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno y seleccionar una fila de la materia" );}
         
-
+      } catch(Exception e){
+              
+              JOptionPane.showMessageDialog(this,"ERROR - Seleccione toda la fila antes de guardar la nota");
+             
+              }
     }//GEN-LAST:event_btGuardarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
@@ -184,9 +188,13 @@ Inscripciondata in;
       if (elegido !=null){
           
       ArrayList <Inscripcion> materias= in.obtenerInscripciones(elegido.getId_alumno());
+          for (Inscripcion materia : materias) {
+               System.out.println(materia);
+          }
        String datos[] = new String[3];
         
         for (Inscripcion i : materias ) {
+                 
             datos[0] = i.getId_inscripcion()+ "";
             datos[1] = i.getMateria().getNombre();
             datos[2] = String.valueOf(i.getNota());

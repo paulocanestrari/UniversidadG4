@@ -22,7 +22,7 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
     public ListadoAlumnosPorMateria() {
         initComponents();
         mateD= new Materiadata();
-       
+          llenarcomboBox();  
     }
     
 
@@ -153,7 +153,7 @@ public class ListadoAlumnosPorMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbMateriasMousePressed
 
     private void cbMateriasMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbMateriasMouseMoved
-     llenarcomboBox();   
+   
     }//GEN-LAST:event_cbMateriasMouseMoved
 
     private void armarTablaAlum() {

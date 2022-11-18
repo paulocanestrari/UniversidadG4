@@ -87,14 +87,14 @@ return in;
 public ArrayList <Inscripcion>  obtenerInscripciones (int id_alumno ){
 ArrayList <Inscripcion> ins=new ArrayList();
 Inscripcion in=null;
-        String sql = "SELECT  id_inscripcion, id_alumno, id_materia, nota FROM inscripcion WHERE id_alumno= ?";
+        String sql = "SELECT* FROM inscripcion WHERE id_alumno= ?";
 try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1,id_alumno);
             //ps.setInt(2,id_materia);
             ResultSet rs= ps.executeQuery();
             
-            if(rs.next()){
+            while(rs.next()){
             in = new Inscripcion();
                 in.setAlumno(al.obtenerAlumnoPorId(rs.getInt("id_alumno")));
                 in.setMateria(ma.obtenerMateriaPorId(rs.getInt("id_materia")));
