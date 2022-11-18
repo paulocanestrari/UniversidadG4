@@ -27,7 +27,7 @@ Inscripciondata in;
         a=new Alumnodata();
         tablal = (DefaultTableModel) Tabla2.getModel();
         in=new Inscripciondata();
-        llenarcomboBox();
+        llenarcomboBox(); 
     }
 
     
@@ -55,6 +55,16 @@ Inscripciondata in;
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Alumno");
 
+        cbAlumnos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cbAlumnosFocusGained(evt);
+            }
+        });
+        cbAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbAlumnosMousePressed(evt);
+            }
+        });
         cbAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAlumnosActionPerformed(evt);
@@ -159,6 +169,14 @@ Inscripciondata in;
             dispose();
         
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void cbAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbAlumnosMousePressed
+        
+    }//GEN-LAST:event_cbAlumnosMousePressed
+
+    private void cbAlumnosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbAlumnosFocusGained
+      
+    }//GEN-LAST:event_cbAlumnosFocusGained
 
     private void armarTabla() {
       borrarfilasTablas();

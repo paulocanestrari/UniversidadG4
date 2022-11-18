@@ -167,7 +167,7 @@ public ArrayList <Materia> obtenermateriasInscriptas (Alumno alumno){
 public ArrayList <Materia> obtenermateriasNOInscriptas ( Alumno alumno){
   ArrayList <Materia> ml= new ArrayList();
   Materia mat= new Materia();
-  String sql="SELECT id_materia FROM inscripcion WHERE id_materia NOT IN (SELECT id_materia FROM inscripcion WHERE id_alumno =?)";
+  String sql="SELECT id_materia FROM materia WHERE id_materia NOT IN (SELECT id_materia FROM inscripcion WHERE id_alumno =?)";
           try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1,alumno.getId_alumno());
